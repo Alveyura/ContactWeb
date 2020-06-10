@@ -1,0 +1,62 @@
+﻿@model ContactWeb.Models.ContactDetailModel
+
+<strong>Avatar</strong>
+
+@if (Model.Avatar.Length > 0)
+{
+    <img src="@ConvertBytesToImg(Model.Avatar)"/>
+}
+else
+{
+    <p>No avatar available</p>
+}
+
+
+<strong>Name</strong>
+<p>@Model.FirstName @Model.LastName</p>
+
+<strong>Age</strong>
+<p>@CalculateAge(Model.BirthDate).ToString()</p>
+
+<strong>Email</strong>
+<p>@Model.Email</p>
+
+<strong>Description</strong>
+@if (string.IsNullOrEmpty(Model.Description))
+{
+    <p>No description available</p>
+}
+else
+{
+    <p>@Model.Description</p>
+}
+
+<strong>Phone number</strong>
+<p>
+    @Model.PhoneNumber
+</p>
+
+<strong>Address</strong>
+@if (string.IsNullOrEmpty(Model.Address))
+{
+    <p>No address available</p>
+}
+else
+{
+    <p>@Model.Address</p>
+}
+
+@functions {
+
+    int CalculateAge(DateTime releaseDate)
+    {
+        return (int)((DateTime.Now - releaseDate).Days / 365.25);
+    }
+
+    string ConvertBytesToImg(Byte[] image)
+    {
+        string imreBase64Data = Convert.ToBase64String(image);
+
+        return $"data:image/png;base64,{imreBase64Data}";
+    }
+}

@@ -1,0 +1,10 @@
+﻿@model ContactDeleteModel
+
+<p>Are you sure you want to delete @Model.ToString() from contacts</p>
+
+
+<form asp-controller="Contact" asp-action="ConfirmDelete" asp-route-id="@Model.Id" method="post">
+    <button class="btn btn-primary" type="submit">Confirm</button>
+</form>
+
+<a asp-controller="Contact" asp-action="Index">Cancel</a>

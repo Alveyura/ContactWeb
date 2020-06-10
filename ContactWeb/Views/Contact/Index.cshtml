@@ -1,0 +1,52 @@
+﻿@model IEnumerable<ContactIndexModel>
+
+<h1>Contacts</h1>
+
+@if (Model == null || !Model.Any())
+{
+    <p>No Contacts available.</p>
+}
+else
+{
+    <table cellpadding="5">
+        <tr>
+            <th colspan="4">Name</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.ToString()
+                </td>
+                <td>
+                    <a asp-action="Detail"
+                       asp-controller="Contact"
+                       asp-route-id="@item.Id">
+                        Details
+                    </a>
+                </td>
+                <td>
+                    <a asp-action="Edit"
+                       asp-controller="Contact"
+                       asp-route-id="@item.Id">
+                        Edit
+                    </a>
+                </td>
+                <td>
+                    <a asp-action="Delete"
+                       asp-controller="Contact"
+                       asp-route-id="@item.Id">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+        }
+    </table>
+}
+
+<a asp-action="Create"
+   asp-controller="Contact"
+   class="btn btn-primary">
+    Add Contact
+</a>
