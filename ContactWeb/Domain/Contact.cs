@@ -16,7 +16,7 @@ namespace ContactWeb.Domain
         public string PhoneNumber { get; set; }
         public string Addres { get; set; }
         public string Description { get; set; }
-        public Byte[] Avatar { get; set; }
+        public string PhotoUrl { get; set; }
         public Category Category { get; set; }
     }
 

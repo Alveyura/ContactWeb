@@ -51,9 +51,9 @@
         <span class="text-danger" asp-validation-for="Category"></span>
     </div>
     <div>
-        @if (Model.FileBytes.Length > 0)
+        @if (!string.IsNullOrEmpty(Model.PhotoUrl))
         {
-            <img src="@ConvertBytesToImg(Model.FileBytes)" />
+            <img src="@Model.PhotoUrl" />
         }
         else
         {
