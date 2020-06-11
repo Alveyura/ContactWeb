@@ -61,6 +61,7 @@ namespace ContactWeb.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Create(ContactCreateModel contact)
         {
             if (!TryValidateModel(contact))
