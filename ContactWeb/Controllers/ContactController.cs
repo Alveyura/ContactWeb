@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ContactWeb.Database;
 using ContactWeb.Domain;
 using ContactWeb.Models;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,6 +15,7 @@ namespace ContactWeb.Controllers
     public class ContactController : Controller
     {
         private readonly IContactDatabase _contactDatabase;
+        private readonly IWebHostEnvironment _hostEnvironment;
 
         public ContactController(IContactDatabase contacts)
         {
@@ -48,6 +50,7 @@ namespace ContactWeb.Controllers
                 BirthDate = contactFromDb.BirthDate,
                 Avatar = contactFromDb.Avatar
             };
+
 
             return View(contact);
         }
@@ -178,6 +181,19 @@ namespace ContactWeb.Controllers
             {
                 return new byte[]{ };
             }
+        }
+
+        private string UploadPhoto(IFormFile photo)
+        {
+            string uniqueFileName = Guid.NewGuid().ToString() + Path.GetExtension(photo.FileName);
+            string pathName = Path.Combine(_hostEnvironment.WebRootPath, "photos");
+            string fileNameWithPath = Path.Combine(pathName, uniqueFileName);
+
+            using (var stream = new FileStream(fileNameWithPath, FileMode.Create))
+            {
+                photo.CopyTo(stream);
+            }
+            return uniqueFileName;
         }
     }
 }
