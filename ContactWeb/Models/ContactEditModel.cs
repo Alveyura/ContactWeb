@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using ContactWeb.Domain;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -35,5 +36,6 @@ namespace ContactWeb.Models
         public byte[] FileBytes { get; set; }
 
         public IFormFile Avatar { get; set; }
+        public Category Category { get; set; }
     }
 }

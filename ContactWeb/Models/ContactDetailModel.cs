@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using ContactWeb.Domain;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,5 +17,6 @@ namespace ContactWeb.Models
         public string Address { get; set; }
         public string Description { get; set; }
         public Byte[] Avatar { get; set; }
+        public Category Category { get; set; }
     }
 }

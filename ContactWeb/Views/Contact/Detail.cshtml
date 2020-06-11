@@ -4,7 +4,7 @@
 
 @if (Model.Avatar.Length > 0)
 {
-    <img src="@ConvertBytesToImg(Model.Avatar)"/>
+    <img src="@ConvertBytesToImg(Model.Avatar)" />
 }
 else
 {
@@ -45,6 +45,9 @@ else
 {
     <p>@Model.Address</p>
 }
+
+<strong>Category:</strong>
+<p>@Model.Category</p>
 
 @functions {
 
