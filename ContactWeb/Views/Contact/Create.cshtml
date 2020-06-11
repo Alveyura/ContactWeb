@@ -1,6 +1,6 @@
 ﻿@model ContactWeb.Models.ContactCreateModel
 
-@{ var categoryList = Enum.GetValues(typeof(Contact.Domain.Category)); }
+@{ var categoryList = Enum.GetValues(typeof(ContactWeb.Domain.Category)); }
 
 <form asp-controller="Contact" asp-action="Create" method="post" enctype="multipart/form-data">
     <div class="form-group">
